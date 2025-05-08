@@ -78,11 +78,18 @@ export const styles = {
     color: theme === "dark" ? "#ccc" : "#666",
     margin: "1rem 0",
   }),
-  desc: (theme, isMobile = false) => ({
-    fontSize: isMobile ? "0.9rem" : "1rem",
-    color: theme === "dark" ? "#aaa" : "#555",
-    lineHeight: "1.6",
-    marginBottom: "1rem",
+  desc: (theme, isMobile) => ({
+    fontSize: isMobile ? "1rem" : "1.1rem",
+    lineHeight: 1.6,
+    color: theme === "dark" ? "#d1d5db" : "#4b5563",
+    marginTop: "1rem",
+  }),
+  teamDesc: (theme, isMobile) => ({
+    fontSize: isMobile ? "1.1rem" : "1.2rem",
+    lineHeight: 1.6,
+    color: theme === "dark" ? "#e5e7eb" : "#374151",
+    marginTop: "1rem",
+    fontWeight: 500,
   }),
   nav: (isMobile = false) => ({
     marginTop: isMobile ? "1rem" : "2rem",

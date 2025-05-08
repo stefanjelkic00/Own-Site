@@ -21,6 +21,9 @@ const About = () => {
       >
         <h2 style={styles.heading(theme, isMobile)}>{translations[language].about}</h2>
         <div style={styles.subSection}>
+          <p style={styles.teamDesc(theme, isMobile)}>{translations[language].aboutTeamDesc}</p>
+        </div>
+        <div style={styles.subSection}>
           <h3 style={styles.subHeading(theme)}>{translations[language].aboutStefan}</h3>
           <p style={styles.desc(theme, isMobile)}>{translations[language].aboutStefanDesc}</p>
         </div>
