@@ -3,25 +3,16 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 import { useLanguage } from "../context/LanguageContext";
-import { translations } from "../data";
+import { translations, techStack } from "../data";
 import { styles } from "../styles";
 import useIsMobile from "../hooks/useIsMobile";
+
 
 const Technologies = () => {
   const { theme } = useTheme();
   const { language } = useLanguage();
   const isMobile = useIsMobile();
 
-  const techList = [
-    "React",
-    "Node.js",
-    "JavaScript",
-    "TypeScript",
-    "HTML",
-    "CSS",
-    "Git",
-    "Webpack",
-  ];
 
   return (
     <section id="technologies" style={styles.section(isMobile)}>
@@ -31,9 +22,9 @@ const Technologies = () => {
         transition={{ duration: 0.5 }}
       >
         <h2 style={styles.heading(theme, isMobile)}>{translations[language].technologies}</h2>
-        {techList.length > 0 ? (
+        {techStack.length > 0 ? (
           <div style={styles.techGrid}>
-            {techList.map((tech, index) => (
+            {techStack.map((tech, index) => (
               <span key={index} style={styles.techBadge(theme)}>
                 {tech}
               </span>
