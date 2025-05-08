@@ -1,28 +1,6 @@
 // src/styles.js
-
 export const styles = {
-  logoSpotlightContainer: {
-    position: "relative",
-    display: "inline-block",
-  },
-  logoSpotlight: (theme) => ({
-    position: "absolute",
-    width: "900px",
-    height: "900px",
-    background:
-      theme === "dark"
-        ? "radial-gradient(circle, rgba(255, 166, 0, 0.1) 0%, transparent 70%)"
-        : "radial-gradient(circle, rgba(0, 0, 0, 0.3) 0%, transparent 70%)",
-    borderRadius: "50%",
-    pointerEvents: "none",
-    zIndex: "-1",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    opacity: "0.8",
-    transition: "background 0.3s ease",
-  }),
-  container: (theme) => ({
+  container: (theme, isMobile = false) => ({
     display: "flex",
     minHeight: "100vh",
     backgroundColor: theme === "dark" ? "#0d0d0d" : "#f5f5f5",
@@ -34,121 +12,141 @@ export const styles = {
     color: theme === "dark" ? "#ffffff" : "#333333",
     position: "relative",
     zIndex: 0,
+    flexDirection: isMobile ? "column" : "row",
   }),
-  leftSide: (theme) => ({
-    width: "40%",
-    position: "fixed",
-    top: 0,
-    left: 0,
-    height: "100vh",
+  leftSide: (theme, isMobile = false) => ({
+    width: isMobile ? "100%" : "40%",
+    position: isMobile ? "relative" : "fixed",
+    top: isMobile ? "auto" : 0,
+    left: isMobile ? "auto" : 0,
+    height: isMobile ? "auto" : "100vh",
     display: "flex",
-    alignItems: "center",
-    padding: "0 2rem",
-    backgroundColor: "transparent",
+    alignItems: isMobile ? "flex-start" : "center",
+    padding: isMobile ? "1rem" : "0 2rem",
+    backgroundColor: isMobile ? (theme === "dark" ? "#1a1a1a" : "#ffffff") : "transparent",
     zIndex: 1,
+    boxShadow: isMobile ? (theme === "dark" ? "0 2px 5px rgba(0,0,0,0.5)" : "0 2px 5px rgba(0,0,0,0.1)") : "none",
   }),
-  leftContent: {
-    maxWidth: "500px",
-    textAlign: "left",
+  leftContent: (isMobile = false) => ({
+    maxWidth: isMobile ? "100%" : "500px",
+    textAlign: isMobile ? "center" : "left",
+    width: "100%",
+  }),
+  rightSide: (isMobile = false) => ({
+    width: isMobile ? "100%" : "60%",
+    marginLeft: isMobile ? 0 : "40%",
+    overflowY: "auto",
+    padding: isMobile ? "1rem" : "2rem",
+    paddingTop: isMobile ? "1rem" : "120px",
+  }),
+  logoSpotlightContainer: {
+    position: "relative",
+    display: "inline-block",
   },
-  logo: (theme) => ({
-    width: "100px",
-    height: "100px",
+  logo: (theme, isMobile = false) => ({
+    width: isMobile ? "80px" : "100px",
+    height: isMobile ? "80px" : "100px",
     marginBottom: "1rem",
     borderRadius: "50%",
     objectFit: "cover",
     border: `2px solid ${theme === "dark" ? "#ffa500" : "#ff6200"}`,
     position: "relative",
     zIndex: 2,
+    margin: isMobile ? "0 auto 1rem" : "0 0 1rem",
   }),
-  name: (theme) => ({
-    fontSize: "2.7rem",
+  logoSpotlight: (theme) => ({
+    content: "''",
+    position: "absolute",
+    top: "-10px",
+    left: "-10px",
+    right: "-10px",
+    bottom: "-10px",
+    background: `radial-gradient(circle, ${
+      theme === "dark" ? "rgba(255, 165, 0, 0.3)" : "rgba(255, 98, 0, 0.3)"
+    } 0%, transparent 70%)`,
+    zIndex: 1,
+    borderRadius: "50%",
+  }),
+  name: (theme, isMobile = false) => ({
+    fontSize: isMobile ? "1.8rem" : "2.7rem",
     fontWeight: "bold",
     marginBottom: "0.3rem",
     color: theme === "dark" ? "#ffffff" : "#333333",
   }),
-  subtitle: (theme) => ({
-    fontSize: "1.5rem",
+  subtitle: (theme, isMobile = false) => ({
+    fontSize: isMobile ? "1.2rem" : "1.5rem",
     color: theme === "dark" ? "#ccc" : "#666",
     margin: "1rem 0",
   }),
-  desc: (theme) => ({
-    fontSize: "1rem",
+  desc: (theme, isMobile = false) => ({
+    fontSize: isMobile ? "0.9rem" : "1rem",
     color: theme === "dark" ? "#aaa" : "#555",
     lineHeight: "1.6",
     marginBottom: "1rem",
   }),
-  rightSide: {
-    width: "60%",
-    marginLeft: "40%",
-    overflowY: "auto",
-    padding: "2rem",
-    paddingTop: "120px",
-  },
-  nav: {
-    marginTop: "2rem",
-  },
-  navList: {
+  nav: (isMobile = false) => ({
+    marginTop: isMobile ? "1rem" : "2rem",
+    display: isMobile ? "none" : "block",
+  }),
+  navList: (isMobile = false) => ({
     listStyle: "none",
     padding: "0",
     margin: "0",
     display: "flex",
-    flexDirection: "column",
+    flexDirection: isMobile ? "column" : "column",
     gap: "1rem",
-  },
-  navLink: (theme) => ({
+  }),
+  navLink: (theme, isMobile = false) => ({
     background: "none",
     border: "none",
     color: theme === "dark" ? "#ccc" : "#666",
-    fontSize: "1.1rem",
+    fontSize: isMobile ? "1rem" : "1.1rem",
     cursor: "pointer",
     textDecoration: "none",
-    padding: "0",
+    padding: isMobile ? "0.5rem 0" : "0",
     position: "relative",
-    textAlign: "left",
+    textAlign: isMobile ? "center" : "left",
     transition: "all 0.3s ease",
     display: "flex",
     alignItems: "center",
     gap: "0.5rem",
-  }),
-  navLinkBefore: (theme) => ({
-    content: '""',
-    width: "20px",
-    height: "1px",
-    backgroundColor: theme === "dark" ? "#ccc" : "#666",
-    transition: "all 0.3s ease",
+    minHeight: "48px",
+    outline: "none",
   }),
   navLinkHover: (theme) => ({
     color: theme === "dark" ? "#ffa500" : "#ff6200",
   }),
+  navLinkBefore: (theme) => ({
+    content: "''",
+    position: "absolute",
+    left: "-45px",
+    width: "20px",
+    height: "2px",
+    backgroundColor: theme === "dark" ? "#ccc" : "#666",
+    transition: "all 0.3s ease",
+  }),
   navLinkHoverBefore: (theme) => ({
     backgroundColor: theme === "dark" ? "#ffa500" : "#ff6200",
   }),
-  socials: {
-    marginTop: "2rem",
-  },
-  socialIcons: {
+  socials: (isMobile = false) => ({
+    marginTop: isMobile ? "1rem" : "2rem",
+  }),
+  socialIcons: (isMobile = false) => ({
     display: "flex",
-    gap: "1rem",
+    gap: isMobile ? "0.8rem" : "1rem",
     marginBottom: "1rem",
-  },
-  socialLink: (theme) => ({
+    justifyContent: isMobile ? "center" : "flex-start",
+  }),
+  socialLink: (theme, isMobile = false) => ({
     color: theme === "dark" ? "#ccc" : "#666",
     transition: "color 0.3s",
     cursor: "pointer",
+    fontSize: isMobile ? "1.5rem" : "1rem",
+    padding: "10px",
   }),
   socialLinkHover: (theme) => ({
     color: theme === "dark" ? "#ffa500" : "#ff6200",
   }),
-  languageText: {
-    fontSize: "25px",
-    lineHeight: "25px",
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "25px",
-    height: "25px",
-  },
   githubList: {
     display: "flex",
     flexDirection: "column",
@@ -157,8 +155,8 @@ export const styles = {
   },
   githubLink: (theme) => ({
     color: theme === "dark" ? "#ccc" : "#666",
-    fontSize: "0.9rem",
     textDecoration: "none",
+    fontSize: "0.9rem",
     transition: "color 0.3s",
   }),
   githubLinkHover: (theme) => ({
@@ -172,8 +170,8 @@ export const styles = {
   },
   emailLink: (theme) => ({
     color: theme === "dark" ? "#ccc" : "#666",
-    fontSize: "0.9rem",
     textDecoration: "none",
+    fontSize: "0.9rem",
     transition: "color 0.3s",
   }),
   emailLinkHover: (theme) => ({
@@ -182,14 +180,18 @@ export const styles = {
   contactList: {
     display: "flex",
     flexDirection: "column",
-    gap: "0.5rem",
-    marginBottom: "1rem",
+    gap: "1rem",
   },
   contactItem: {
     display: "flex",
-    alignItems: "center",
+    flexDirection: "column",
     gap: "0.5rem",
   },
+  contactText: (theme) => ({
+    color: theme === "dark" ? "#ccc" : "#666",
+    fontSize: "0.9rem",
+    margin: 0,
+  }),
   contactIcons: {
     display: "flex",
     gap: "0.5rem",
@@ -198,18 +200,24 @@ export const styles = {
     color: theme === "dark" ? "#ccc" : "#666",
     transition: "color 0.3s",
   }),
-  contactText: (theme) => ({
+  themeToggle: (theme, isMobile = false) => ({
     color: theme === "dark" ? "#ccc" : "#666",
-    fontSize: "0.9rem",
-    margin: 0,
+    cursor: "pointer",
+    fontSize: isMobile ? "1.5rem" : "1rem",
+    padding: "10px",
+    transition: "color 0.3s",
   }),
-  section: {
-    marginBottom: "8rem",
-  },
-  heading: (theme) => ({
-    fontSize: "2.5rem",
+  languageText: (isMobile = false) => ({
+    fontSize: isMobile ? "1rem" : "0.8rem",
+    fontWeight: "bold",
+  }),
+  section: (isMobile = false) => ({
+    marginBottom: isMobile ? "4rem" : "8rem",
+  }),
+  heading: (theme, isMobile = false) => ({
+    fontSize: isMobile ? "1.8rem" : "2.5rem",
     color: theme === "dark" ? "#ffa500" : "#ff6200",
-    marginBottom: "2rem",
+    marginBottom: "1.5rem",
     letterSpacing: "1px",
     textShadow: theme === "dark" ? "1px 1px 2px rgba(0, 0, 0, 0.3)" : "none",
   }),
@@ -246,23 +254,17 @@ export const styles = {
     gridTemplateColumns: "1fr",
     gap: "2rem",
   },
-  card: (theme) => ({
+  card: (theme, isMobile = false) => ({
     backgroundColor: theme === "dark" ? "transparent" : "#ffffff",
     borderRadius: "8px",
-    padding: "2rem",
+    padding: isMobile ? "1rem" : "2rem",
     boxShadow: theme === "dark" ? "none" : "0 2px 8px rgba(0, 0, 0, 0.1)",
     transition: "0.3s",
     width: "100%",
-    maxWidth: "600px",
+    maxWidth: isMobile ? "100%" : "600px",
     margin: "0 auto",
     position: "relative",
   }),
-  cardHeader: {
-    display: "flex",
-    alignItems: "center",
-    gap: "0.5rem",
-    marginBottom: "0.5rem",
-  },
   link: (theme) => ({
     color: theme === "dark" ? "#ffa500" : "#ff6200",
     fontSize: "1.1rem",
@@ -293,9 +295,10 @@ export const styles = {
     color: theme === "dark" ? "#ccc" : "#666",
     transition: "color 0.3s",
   }),
-  themeToggle: (theme) => ({
-    color: theme === "dark" ? "#ccc" : "#666",
-    transition: "color 0.3s",
-    cursor: "pointer",
+  cardHeader: (theme) => ({
+    display: "flex",
+    alignItems: "center",
+    gap: "1rem",
+    marginBottom: "1rem",
   }),
 };

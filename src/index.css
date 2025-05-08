@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.nav-link:focus {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+/* Define CSS variable based on theme */
+[data-theme="dark"] {
+  --focus-color: #ffa500;
+}
+
+[data-theme="light"] {
+  --focus-color: #ff6200;
+}
