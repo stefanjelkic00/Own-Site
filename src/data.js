@@ -64,10 +64,34 @@ export const translations = {
     period3: "05.2024 - 07.2024",
     period4: "04.2024 - 05.2024",
     // Nikolini projekti
-    nikolaProject1Title: "UI/UX Dashboard",
+    nikolaProject1Title: "SecureStay",
     nikolaProject1Desc:
-      "A modern dashboard design for analytics, focusing on user-friendly interfaces and responsive layouts.",
-    nikolaProject1Period: "03.2025 - 05.2025",
+      "A secure accommodation booking platform with robust security features like CAPTCHA, email verification, JWT, roles, and Spring Security, ensuring a safe and user-friendly experience.",
+    nikolaProject1Period: "01.2024 - 04.2024",
+    nikolaProject2Title: "UniConnect",
+    nikolaProject2Desc:
+      "A university social network with advanced search capabilities powered by Elasticsearch and file storage support via MinIO, designed for seamless student interaction.",
+    nikolaProject2Period: "05.2024 - 08.2024",
+    nikolaProject3Title: "EduCourses",
+    nikolaProject3Desc:
+      "An online course platform with authentication, course browsing, and registration features, built with a modern UI/UX for accessible learning across devices.",
+    nikolaProject3Period: "09.2024 - 11.2024",
+    nikolaProject4Title: "VaxPortal",
+    nikolaProject4Desc:
+      "A COVID-19 vaccination management system for scheduling and tracking vaccinations, featuring a responsive interface and secure data handling.",
+    nikolaProject4Period: "03.2024 - 06.2024",
+    nikolaProject5Title: "AutoService",
+    nikolaProject5Desc:
+      "A desktop application for managing car servicing, providing an intuitive interface for scheduling and tracking vehicle maintenance.",
+    nikolaProject5Period: "01.2023 - 03.2023",
+    nikolaProject6Title: "EduPortal",
+    nikolaProject6Desc:
+      "A student information system for managing student data, courses, and grades, designed with a clean and efficient UI for educational institutions.",
+    nikolaProject6Period: "06.2023 - 09.2023",
+    nikolaProject7Title: "Internship at Vega IT",
+    nikolaProject7Desc:
+      "Contributed to a full-stack application using .NET for the backend and TypeScript with Redux for the frontend. Focused on designing intuitive UI/UX and integrating with backend APIs.",
+    nikolaProject7Period: "07.2024 - 09.2024",
 
     // Ključevi za navigaciju
     navAbout: "About",
@@ -143,10 +167,34 @@ export const translations = {
     period3: "05.2024 - 07.2024",
     period4: "04.2024 - 05.2024",
     // Nikolini projekti
-    nikolaProject1Title: "UI/UX Kontrolna tabla",
+    nikolaProject1Title: "SecureStay",
     nikolaProject1Desc:
-      "Moderan dizajn kontrolne table za analitiku, sa fokusom na korisnički prijateljski interfejs i responsivni raspored.",
-    nikolaProject1Period: "03.2025 - 05.2025",
+      "Web aplikacija za zakazivanje smeštaja sa fokusom na sigurnosne mehanizme poput CAPTCHA, email verifikacije, JWT-a, uloga i Spring Security-ja, obezbeđujući sigurno i korisnički prijateljsko iskustvo.",
+    nikolaProject1Period: "01.2024 - 04.2024",
+    nikolaProject2Title: "UniConnect",
+    nikolaProject2Desc:
+      "Studentska društvena mreža sa naprednom pretragom pomoću Elasticsearch-a i podrškom za skladištenje fajlova kroz MinIO, dizajnirana za besprekorno povezivanje studenata.",
+    nikolaProject2Period: "05.2024 - 08.2024",
+    nikolaProject3Title: "EduCourses",
+    nikolaProject3Desc:
+      "Platforma za online kurseve sa autentifikacijom, pregledom i registracijom na kurseve, razvijena sa modernim UI/UX za dostupno učenje na svim uređajima.",
+    nikolaProject3Period: "09.2024 - 11.2024",
+    nikolaProject4Title: "VaxPortal",
+    nikolaProject4Desc:
+      "Sistem za upravljanje vakcinacijama protiv COVID-19 za zakazivanje i evidenciju, sa responsivnim interfejsom i sigurnim rukovanjem podacima.",
+    nikolaProject4Period: "03.2024 - 06.2024",
+    nikolaProject5Title: "AutoService",
+    nikolaProject5Desc:
+      "Desktop aplikacija za upravljanje servisiranjem automobila, sa intuitivnim interfejsom za zakazivanje i praćenje održavanja vozila.",
+    nikolaProject5Period: "01.2023 - 03.2023",
+    nikolaProject6Title: "EduPortal",
+    nikolaProject6Desc:
+      "Sistem za upravljanje studentskim informacijama, predmetima i ocenama, dizajniran sa čistim i efikasnim UI za obrazovne institucije.",
+    nikolaProject6Period: "06.2023 - 09.2023",
+    nikolaProject7Title: "Praksa u Vega IT",
+    nikolaProject7Desc:
+      "Učestvovao u razvoju full-stack aplikacije koristeći .NET za backend i TypeScript sa Redux-om za frontend. Fokus na dizajnu intuitivnog UI/UX i integraciji sa backend API-jima.",
+    nikolaProject7Period: "07.2024 - 09.2024",
 
     // Ključevi za navigaciju
     navAbout: "O nama",
@@ -165,6 +213,7 @@ export const techStack = [
   "Spring Boot",
   "Spring Security",
   "JWT",
+  "JPA",
   ".NET",
   "ASP.NET",
   "C#",
@@ -174,9 +223,11 @@ export const techStack = [
   "React.js",
   "React Native",
   "Redux",
+  "Redux-Saga",
   "Axios",
   "Next.js",
   "Node.js",
+  "Angular",
   "HTML",
   "HTML5",
   "CSS",
@@ -185,11 +236,16 @@ export const techStack = [
   "MySQL",
   "PostgreSQL",
   "MSSQL",
+  "Firestore",
+  "Firebase",
   "Elasticsearch",
+  "MinIO",
+  "Swing",
   "Docker",
   "Git",
   "GitHub",
   "Google Maps API",
+  "Figma",
 ];
 
 export const teamProjects = [
@@ -322,8 +378,56 @@ export const nikolaProjects = [
     title: "nikolaProject1Title",
     description: "nikolaProject1Desc",
     period: "nikolaProject1Period",
-    github: "https://github.com/NikolaMatosic00/dashboard",
-    tech: ["Figma", "React", "TypeScript", "CSS", "Git", "GitHub"],
+    github: "https://github.com/NikolaMatosic00/SecureStay",
+    tech: ["Java", "Spring Boot", "Spring Security", "JWT", "JPA", "MySQL", "React"],
+    type: "project",
+  },
+  {
+    title: "nikolaProject2Title",
+    description: "nikolaProject2Desc",
+    period: "nikolaProject2Period",
+    github: "https://github.com/NikolaMatosic00/UniConnect",
+    tech: ["Java", "Spring Boot", "Elasticsearch", "MinIO", "JPA", "MySQL", "React", "Redux"],
+    type: "project",
+  },
+  {
+    title: "nikolaProject3Title",
+    description: "nikolaProject3Desc",
+    period: "nikolaProject3Period",
+    github: "https://github.com/NikolaMatosic00/EduCourses",
+    tech: ["React", "TypeScript", "Firebase", "Firestore"],
+    type: "project",
+  },
+  {
+    title: "nikolaProject4Title",
+    description: "nikolaProject4Desc",
+    period: "nikolaProject4Period",
+    github: "https://github.com/NikolaMatosic00/VaxPortal",
+    tech: ["Java", "Spring Boot", "JPA", "MySQL", "React", "TypeScript", "Redux", "Redux-Saga"],
+    type: "project",
+  },
+  {
+    title: "nikolaProject5Title",
+    description: "nikolaProject5Desc",
+    period: "nikolaProject5Period",
+    github: "https://github.com/NikolaMatosic00/AutoService",
+    tech: ["Java", "Swing"],
+    type: "project",
+  },
+  {
+    title: "nikolaProject6Title",
+    description: "nikolaProject6Desc",
+    period: "nikolaProject6Period",
+    github: "https://github.com/NikolaMatosic00/EduPortal",
+    tech: ["Java", "Spring Boot", "JPA", "MySQL", "Angular"],
+    type: "project",
+  },
+  {
+    title: "nikolaProject7Title",
+    description: "nikolaProject7Desc",
+    period: "nikolaProject7Period",
+    tech: [".NET", "TypeScript", "Redux", "React", "CSS", "Git"],
+    type: "experience",
   },
 ];
 
