@@ -38,12 +38,14 @@ const Home = () => {
           });
 
           if (mostVisibleSection) {
+            console.log(mostVisibleSection);
+            
             setActiveSection(mostVisibleSection);
           }
         },
         {
           threshold: [0.1],
-          rootMargin: "-130px 0px -50% 0px",
+          rootMargin: "-10px 0px -10% 0px",
         }
       );
 
