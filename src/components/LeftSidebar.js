@@ -1,6 +1,5 @@
-// src/components/LeftSidebar.js
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion"; // Add AnimatePresence for exit animations
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaViber, FaWhatsapp, FaSun, FaMoon, FaBars } from "react-icons/fa";
 import { styles } from "../styles";
 import { useTheme } from "../context/ThemeContext";
@@ -19,6 +18,39 @@ const LeftSidebar = ({ scrollToSection, activeSection }) => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Animation variants for the container
+  const containerVariants = {
+    hidden: { opacity: 0, height: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      height: "auto",
+      y: 0,
+      transition: {
+        duration: 0.3,
+        when: "beforeChildren",
+        staggerChildren: 0.1,
+      },
+    },
+    exit: {
+      opacity: 0,
+      height: 0,
+      y: -20,
+      transition: {
+        duration: 0.1,
+        when: "afterChildren",
+        staggerChildren: 0.1,
+        staggerDirection: -1,
+      },
+    },
+  };
+
+  // Animation variants for individual items
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.2 } },
+    exit: { opacity: 0, y: 10, transition: { duration: 0.2 } },
   };
 
   return (
@@ -202,155 +234,192 @@ const LeftSidebar = ({ scrollToSection, activeSection }) => {
           </div>
 
           {/* GitHub links */}
-          {showGitHubs && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              transition={{ duration: 0.3 }}
-              style={styles.githubList}
-            >
-              <a
-                href="https://github.com/stefanjelkic00"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={styles.githubLink(theme)}
-                onMouseEnter={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = styles.githubLinkHover(theme).color;
-                }}
-                onMouseLeave={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = styles.githubLink(theme).color;
-                }}
+          <AnimatePresence>
+            {showGitHubs && (
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                style={styles.githubList(isMobile)}
               >
-                {translations[language].githubStefan}
-              </a>
-              <a
-                href="https://github.com/NikolaMatosic00"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={styles.githubLink(theme)}
-                onMouseEnter={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = styles.githubLinkHover(theme).color;
-                }}
-                onMouseLeave={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = styles.githubLink(theme).color;
-                }}
-              >
-                {translations[language].githubNikola}
-              </a>
-            </motion.div>
-          )}
+                <motion.a
+                  variants={itemVariants}
+                  href="https://github.com/stefanjelkic00"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={styles.githubLink(theme, isMobile)}
+                  onMouseEnter={(e) => {
+                    if (!isMobile) {
+                      e.currentTarget.style.color = styles.githubLinkHover(theme).color;
+                      e.currentTarget.style.transform = "scale(1.05)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isMobile) {
+                      e.currentTarget.style.color = styles.githubLink(theme, isMobile).color;
+                      e.currentTarget.style.transform = "scale(1)";
+                    }
+                  }}
+                >
+                  {translations[language].githubStefan}
+                </motion.a>
+                <motion.a
+                  variants={itemVariants}
+                  href="https://github.com/NikolaMatosic00"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={styles.githubLink(theme, isMobile)}
+                  onMouseEnter={(e) => {
+                    if (!isMobile) {
+                      e.currentTarget.style.color = styles.githubLinkHover(theme).color;
+                      e.currentTarget.style.transform = "scale(1.05)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isMobile) {
+                      e.currentTarget.style.color = styles.githubLink(theme, isMobile).color;
+                      e.currentTarget.style.transform = "scale(1)";
+                    }
+                  }}
+                >
+                  {translations[language].githubNikola}
+                </motion.a>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Email addresses */}
-          {showEmails && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              transition={{ duration: 0.3 }}
-              style={styles.emailList}
-            >
-              <a
-                href="mailto:stefanjelkic@gmail.com"
-                style={styles.emailLink(theme)}
-                onMouseEnter={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = styles.emailLinkHover(theme).color;
-                }}
-                onMouseLeave={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = styles.emailLink(theme).color;
-                }}
+          <AnimatePresence>
+            {showEmails && (
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                style={styles.emailList(isMobile)}
               >
-                stefanjelkic@gmail.com
-              </a>
-              <a
-                href="mailto:nikola.matosic2000@gmail.com"
-                style={styles.emailLink(theme)}
-                onMouseEnter={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = styles.emailLinkHover(theme).color;
-                }}
-                onMouseLeave={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = styles.emailLink(theme).color;
-                }}
-              >
-                nikola.matosic2000@gmail.com
-              </a>
-            </motion.div>
-          )}
+                <motion.a
+                  variants={itemVariants}
+                  href="mailto:stefanjelkic@gmail.com"
+                  style={styles.emailLink(theme, isMobile)}
+                  onMouseEnter={(e) => {
+                    if (!isMobile) {
+                      e.currentTarget.style.color = styles.emailLinkHover(theme).color;
+                      e.currentTarget.style.transform = "scale(1.05)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isMobile) {
+                      e.currentTarget.style.color = styles.emailLink(theme, isMobile).color;
+                      e.currentTarget.style.transform = "scale(1)";
+                    }
+                  }}
+                >
+                  stefanjelkic@gmail.com
+                </motion.a>
+                <motion.a
+                  variants={itemVariants}
+                  href="mailto:nikola.matosic2000@gmail.com"
+                  style={styles.emailLink(theme, isMobile)}
+                  onMouseEnter={(e) => {
+                    if (!isMobile) {
+                      e.currentTarget.style.color = styles.emailLinkHover(theme).color;
+                      e.currentTarget.style.transform = "scale(1.05)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isMobile) {
+                      e.currentTarget.style.color = styles.emailLink(theme, isMobile).color;
+                      e.currentTarget.style.transform = "scale(1)";
+                    }
+                  }}
+                >
+                  nikola.matosic2000@gmail.com
+                </motion.a>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Contact information */}
-          {showContacts && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              transition={{ duration: 0.3 }}
-              style={styles.contactList}
-            >
-              <div style={styles.contactItem}>
-                <p style={styles.contactText(theme)}>{translations[language].contactStefan}</p>
-                <div style={styles.contactIcons}>
-                  <a
-                    href="viber://chat?number=%2B381695590320"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={styles.contactIcon(theme)}
-                    onMouseEnter={(e) => {
-                      if (!isMobile) e.currentTarget.style.color = styles.githubLinkHover(theme).color;
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isMobile) e.currentTarget.style.color = styles.contactIcon(theme).color;
-                    }}
-                  >
-                    <FaViber size={18} />
-                  </a>
-                  <a
-                    href="https://wa.me/+381695590320"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={styles.contactIcon(theme)}
-                    onMouseEnter={(e) => {
-                      if (!isMobile) e.currentTarget.style.color = styles.githubLinkHover(theme).color;
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isMobile) e.currentTarget.style.color = styles.contactIcon(theme).color;
-                    }}
-                  >
-                    <FaWhatsapp size={18} />
-                  </a>
-                </div>
-              </div>
-              <div style={styles.contactItem}>
-                <p style={styles.contactText(theme)}>{translations[language].contactNikola}</p>
-                <div style={styles.contactIcons}>
-                  <a
-                    href="viber://chat?number=%2B381646477555"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={styles.contactIcon(theme)}
-                    onMouseEnter={(e) => {
-                      if (!isMobile) e.currentTarget.style.color = styles.githubLinkHover(theme).color;
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isMobile) e.currentTarget.style.color = styles.contactIcon(theme).color;
-                    }}
-                  >
-                    <FaViber size={18} />
-                  </a>
-                  <a
-                    href="https://wa.me/+381646477555"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={styles.contactIcon(theme)}
-                    onMouseEnter={(e) => {
-                      if (!isMobile) e.currentTarget.style.color = styles.githubLinkHover(theme).color;
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isMobile) e.currentTarget.style.color = styles.contactIcon(theme).color;
-                    }}
-                  >
-                    <FaWhatsapp size={18} />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          )}
+          <AnimatePresence>
+            {showContacts && (
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                style={styles.contactList(isMobile)}
+              >
+                <motion.div variants={itemVariants} style={styles.contactItem(isMobile)}>
+                  <p style={styles.contactText(theme, isMobile)}>{translations[language].contactStefan}</p>
+                  <div style={styles.contactIcons}>
+                    <a
+                      href="viber://chat?number=%2B381695590320"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={styles.contactIcon(theme)}
+                      onMouseEnter={(e) => {
+                        if (!isMobile) e.currentTarget.style.color = styles.githubLinkHover(theme).color;
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!isMobile) e.currentTarget.style.color = styles.contactIcon(theme).color;
+                      }}
+                    >
+                      <FaViber size={18} />
+                    </a>
+                    <a
+                      href="https://wa.me/+381695590320"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={styles.contactIcon(theme)}
+                      onMouseEnter={(e) => {
+                        if (!isMobile) e.currentTarget.style.color = styles.githubLinkHover(theme).color;
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!isMobile) e.currentTarget.style.color = styles.contactIcon(theme).color;
+                      }}
+                    >
+                      <FaWhatsapp size={18} />
+                    </a>
+                  </div>
+                </motion.div>
+                <motion.div variants={itemVariants} style={styles.contactItem(isMobile)}>
+                  <p style={styles.contactText(theme, isMobile)}>{translations[language].contactNikola}</p>
+                  <div style={styles.contactIcons}>
+                    <a
+                      href="viber://chat?number=%2B381646477555"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={styles.contactIcon(theme)}
+                      onMouseEnter={(e) => {
+                        if (!isMobile) e.currentTarget.style.color = styles.githubLinkHover(theme).color;
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!isMobile) e.currentTarget.style.color = styles.contactIcon(theme).color;
+                      }}
+                    >
+                      <FaViber size={18} />
+                    </a>
+                    <a
+                      href="https://wa.me/+381646477555"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={styles.contactIcon(theme)}
+                      onMouseEnter={(e) => {
+                        if (!isMobile) e.currentTarget.style.color = styles.githubLinkHover(theme).color;
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!isMobile) e.currentTarget.style.color = styles.contactIcon(theme).color;
+                      }}
+                    >
+                      <FaWhatsapp size={18} />
+                    </a>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </motion.div>
     </div>

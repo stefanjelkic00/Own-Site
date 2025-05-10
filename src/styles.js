@@ -154,54 +154,72 @@ export const styles = {
   socialLinkHover: (theme) => ({
     color: theme === "dark" ? "#ffa500" : "#ff6200",
   }),
-  githubList: {
+
+  githubList: (isMobile = false) => ({
     display: "flex",
     flexDirection: "column",
     gap: "0.5rem",
     marginBottom: "1rem",
-  },
-  githubLink: (theme) => ({
+    justifyContent: isMobile ? "center" : "flex-start",
+    alignItems: isMobile ? "center" : "flex-start",
+    width: "100%",
+  }),
+  githubLink: (theme, isMobile = false) => ({
     color: theme === "dark" ? "#ccc" : "#666",
     textDecoration: "none",
-    fontSize: "0.9rem",
-    transition: "color 0.3s",
+    fontSize: isMobile ? "0.95rem" : "0.9rem",
+    transition: "color 0.3s, transform 0.3s",
+    textAlign: isMobile ? "center" : "left",
   }),
+
   githubLinkHover: (theme) => ({
     color: theme === "dark" ? "#ffa500" : "#ff6200",
   }),
-  emailList: {
+  emailList: (isMobile = false) => ({
     display: "flex",
     flexDirection: "column",
     gap: "0.5rem",
     marginBottom: "1rem",
-  },
-  emailLink: (theme) => ({
+    justifyContent: isMobile ? "center" : "flex-start",
+    alignItems: isMobile ? "center" : "flex-start",
+    width: "100%",
+  }),
+  emailLink: (theme, isMobile = false) => ({
     color: theme === "dark" ? "#ccc" : "#666",
     textDecoration: "none",
-    fontSize: "0.9rem",
-    transition: "color 0.3s",
+    fontSize: isMobile ? "0.95rem" : "0.9rem",
+    transition: "color 0.3s, transform 0.3s",
+    textAlign: isMobile ? "center" : "left",
   }),
   emailLinkHover: (theme) => ({
     color: theme === "dark" ? "#ffa500" : "#ff6200",
   }),
-  contactList: {
+  contactList: (isMobile = false) => ({
     display: "flex",
     flexDirection: "column",
     gap: "1rem",
-  },
-  contactItem: {
+    justifyContent: isMobile ? "center" : "flex-start",
+    alignItems: isMobile ? "center" : "flex-start",
+    width: "100%",
+  }),
+  contactItem: (isMobile = false) => ({
     display: "flex",
-    flexDirection: "column",
-    gap: "0.5rem",
-  },
-  contactText: (theme) => ({
+    flexDirection: "row",
+    gap: isMobile ? "1rem" : "2rem",
+    alignItems: "center",
+    justifyContent: isMobile ? "center" : "flex-start",
+    width: isMobile ? "100%" : "auto",
+    textAlign: isMobile ? "center" : "left",
+  }),
+  contactText: (theme, isMobile = false) => ({
     color: theme === "dark" ? "#ccc" : "#666",
-    fontSize: "0.9rem",
+    fontSize: isMobile ? "0.95rem" : "0.9rem",
     margin: 0,
+    textAlign: isMobile ? "center" : "left",
   }),
   contactIcons: {
     display: "flex",
-    gap: "0.5rem",
+    gap: "1rem",
   },
   contactIcon: (theme) => ({
     color: theme === "dark" ? "#ccc" : "#666",
